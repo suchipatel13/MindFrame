@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { Link } from 'expo-router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebaseAuth';
+import { useRouter } from 'expo-router';
 
+const router = useRouter();
 
 export default function Login() {
   // Track input values
@@ -16,9 +18,13 @@ export default function Login() {
       Alert.alert('Error', 'Please fill in all fields');
     } else {
       try {
-        await signInWithEmailAndPassword(auth, email, password,);
-        Alert.alert('Success', `Welcome back, ${email}`);
-        // You can navigate to the home screen or dashboard here
+        await signInWithEmailAndPassword(auth, email, password);
+        Alert.alert('Success', `Welcome back, ${email}`, [
+          {
+            text: "OK",
+            onPress: () => router.replace("/home"),
+          },
+        ]);
       } catch (error) {
         Alert.alert('Login Error', error.message);
       }
