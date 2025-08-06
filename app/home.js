@@ -24,7 +24,7 @@ export default function Home() {
         <Text style={styles.cardText}>📝 Journaling Screen</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.card} onPress={() => router.push('/mood')}>
+      <TouchableOpacity style={styles.card} onPress={() => router.push('/(tabs)/mood')}>
         <Text style={styles.cardText}>📊 Mood Tracker</Text>
       </TouchableOpacity>
 
